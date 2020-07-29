@@ -9,6 +9,10 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 @Configuration
 @EnableAsync
+
+// A validação do saldo é feita um pouco depois. Como ela demora um pouco, para não travar a tela do usuário, é feita uma validação assíncrona (background)
+// Boa prática: utiliza uma fila (broker) para processar essas transações
+// Existem APIs das operadoras de cartão de crédito para Sand Box/Tests para estas transações
 public class ExecucaoAssincronaConfiguracao {
 
 	@Bean(name = "asyncExecutor")

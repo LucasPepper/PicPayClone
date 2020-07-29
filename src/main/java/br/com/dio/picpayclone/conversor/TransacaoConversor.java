@@ -18,6 +18,7 @@ public class TransacaoConversor extends ConversorBase<Transacao, TransacaoDTO> {
 	
 	@Override
 	public TransacaoDTO converterEntidadeParaDto(Transacao entidade) {
+		// ModelMapper: Lib
 		ModelMapper modelMapper = new ModelMapper();
 		modelMapper.addMappings(new PropertyMap<Transacao, TransacaoDTO>() {
 			@Override
@@ -41,6 +42,7 @@ public class TransacaoConversor extends ConversorBase<Transacao, TransacaoDTO> {
 	
 	@Override
 	public Transacao converterDtoParaEntidade(TransacaoDTO dto) {
+		// Padrão de Projeto: Builder: Constrói uma entidade (sem poluir o código com setters) apenas com os parâmetros desejados
 		return Transacao.builder()
 				.codigo(dto.getCodigo())
 				.dataHora(dto.getDataHora())

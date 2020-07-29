@@ -11,6 +11,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 	Usuario findByLogin(String login);
 
 	@Modifying
+	// ?1-> 1º parâmetro ?2 -> 2º parâmetro
 	@Query("update Usuario u set u.saldo = u.saldo - ?2 where u.login = ?1")
 	void updateDecrementarSaldo(String login, Double valor);
 

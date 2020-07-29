@@ -18,6 +18,7 @@ import br.com.dio.picpayclone.service.IUsuarioService;
 
 @RestController
 @RequestMapping("/usuarios")
+// IUsuarioResource (Swagger - Doc da API) implementada aqui
 public class UsuarioResource extends ResourceBase<UsuarioDTO> implements IUsuarioResource {
 
 	@Autowired

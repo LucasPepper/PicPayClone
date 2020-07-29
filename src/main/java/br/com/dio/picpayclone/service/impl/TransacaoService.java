@@ -33,19 +33,20 @@ public class TransacaoService implements ITransacaoService {
 		Transacao transacaoSalva = salvar(transacaoDTO);
 		cartaoCreditoService.salvar(transacaoDTO.getCartaoCredito());
 		usuarioService.atualizarSaldo(transacaoSalva, transacaoDTO.getIsCartaoCredito());
+		// Conversor: DTO <-> Entity
 		return transacaoConversor.converterEntidadeParaDto(transacaoSalva);
 	}
 
 	private Transacao salvar(TransacaoDTO transacaoDTO) {
 		Transacao transacao = transacaoConversor.converterDtoParaEntidade(transacaoDTO);
-		usuarioService.validar(transacao.getDestino(), transacao.getDestino());
+		usuarioService.validar(transacao.getDestino(), transacao.getOrigem());
 		return transacaoRepository.save(transacao);
 	}
 
 	@Override
 	public Page<TransacaoDTO> listar(Pageable paginacao, String loginUsuario) {
-		Page<Transacao> transacaoes = transacaoRepository.findByOrigem_LoginOrDestino_Login(loginUsuario, loginUsuario, paginacao);
-		return transacaoConversor.converterPageEntidadeParaDto(transacaoes);
+		Page<Transacao> transacoes = transacaoRepository.findByOrigem_LoginOrDestino_Login(loginUsuario, loginUsuario, paginacao);
+		return transacaoConversor.converterPageEntidadeParaDto(transacoes);
 	}
 
 }

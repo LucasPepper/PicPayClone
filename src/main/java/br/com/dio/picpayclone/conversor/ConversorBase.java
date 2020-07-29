@@ -3,6 +3,7 @@ package br.com.dio.picpayclone.conversor;
 import java.util.ArrayList;
 import java.util.List;
 
+// Classe Genérica, útil para vários projetos <Entity, DTO>
 public abstract class ConversorBase<E, D> {
 
 

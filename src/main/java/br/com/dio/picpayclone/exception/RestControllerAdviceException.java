@@ -21,6 +21,7 @@ public class RestControllerAdviceException {
 	@Autowired
 	private MessageSource messageSource;
 
+	// Método genérico: pode-se utilizar em todos projetos
 	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public List<ErrorDTO> handle(MethodArgumentNotValidException exception) {
